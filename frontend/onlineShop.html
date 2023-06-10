@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shop</title>
+</head>
+<body>
+    <h1>Create</h1>
+
+    <label>First Name</label>
+    <input id="fName" type="text"><br>
+
+    <label>Last Name</label>
+    <input id="lName" type="text"><br>
+    
+    <label>Country</label>
+    <input id="country" type="text"><br><br>
+
+    <button onclick="signup()" type="submit">Signup</button>
+    <br><br>
+
+    <h1>Delete</h1>
+
+    <label>Remove User</label>
+    <input id="idUser" type="number" maxlength="100" placeholder="id User">
+    <br><br>
+    <button  onclick="remove()" type="submit">Remove</button>
+
+    <h1>Update</h1>
+
+    <label for="">idUser</label>
+    <input id="updateID" type="number" maxlength="100" placeholder="id User">
+    <br><br>
+    <label>First Name</label>
+    <input id="FirstName" type="text">
+    <br><br>
+    <label>Last Name</label>
+    <input id="lastName" type="text">
+    <br><br>
+    <button onclick="update()">update</button>
+
+    <script src="onlineShop.js"></script>
+</body>
+</html>

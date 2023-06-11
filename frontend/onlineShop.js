@@ -43,6 +43,30 @@ function signup() {
     })
 }
 
+function login() {
+fetch('http://127.0.0.1:8000/data/users', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+})
+    .then(response => response.json())
+    .then(response => {
+        let users = response.data;
+        users.forEach(user => {
+            if  (user.username === loginUsername.value && user.password ===loginPassword.value){
+                console.log('ok')
+            }
+            else{
+                console.log('error')
+            }
+        });
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
+
 // function remove() {
 //     let formData ={
 //         'id' : idUser.value,

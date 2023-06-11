@@ -9,21 +9,19 @@ import json
 from .models import Users
 
 
-# @api_view(['GET'])
-# def dataUsers(request):
-#     usersList = Users.objects.all()
+@api_view(['GET'])
+def dataUsers(request):
+    usersList = Users.objects.all()
 
-#     data = []
-#     for user in usersList:
-#         userData = {
-#             'id': user.id,
-#             'firstname': user.firstname,
-#             'lastname': user.lastname,
-#             'country': user.country
-#         }
-#         data.append(userData)
+    data = []
+    for user in usersList:
+        userData = {
+            'username': user.username,
+            'password': user.password
+        }
+        data.append(userData)
 
-#     return JsonResponse({'data': data})
+    return JsonResponse({'data': data})
 
 
 @api_view(['POST'])

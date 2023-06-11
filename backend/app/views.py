@@ -26,17 +26,31 @@ from .models import Users
 #     return JsonResponse({'data': data})
 
 
-# @api_view(['POST'])
-# def addUser(request):
-#     data = json.loads(request.body)
-#     firstname = data['firstname']
-#     lastname = data['lastname']
-#     country = data['country']
+@api_view(['POST'])
+def addUser(request):
+    data = json.loads(request.body)
+    nameLastname = data['nameLastname']
+    username = data['username']
+    password = data['password']
+    email = data['email']
+    phoneNumber = data['phoneNumber']
+    city = data['city']
+    address = data['address']
+    nationalCode = data['nationalCode']
 
-#     user = Users(firstname=firstname, lastname=lastname, country=country)
-#     user.save()
+    user = Users(
+    username = nameLastname,
+    name_lastname = username,
+    password = password,
+    email = email,
+    phone_number = phoneNumber,
+    city = city,
+    address = address,
+    national_code = nationalCode,
+    )
+    user.save()
 
-#     return Response({'status': 'ok'})
+    return Response({'status': 'ok'})
 
 # @api_view(['DELETE'])
 # def deleteUser(request):

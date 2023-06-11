@@ -9,3 +9,18 @@ class Users(models.Model):
     city = models.CharField(max_length=255, default='N/A')
     address = models.CharField(max_length=255, default='N/A')
     national_code = models.CharField(max_length=255, default='N/A')
+
+
+# class Product(models.Model):
+#     product_name = models.CharField(max_length=255)
+#     description = models.CharField(max_length=255)
+#     price = models.CharField(max_length=255)
+#     image = models.CharField(max_length=255)
+#     category_id = models.CharField(max_length=255)
+
+
+
+# class Categorys(models.Model):
+#     category_name = models.CharField(max_length=255)
+#     category_description = models.CharField(max_length=255)
+#     category_image = models.CharField(max_length=255)

@@ -8,6 +8,7 @@ import json
 
 from .models import Users
 
+#user
 
 @api_view(['GET'])
 def dataUsers(request):
@@ -71,5 +72,34 @@ def addUser(request):
 #     user.firstname = firstname
 #     user.lastname = lastname
 #     user.save()
+
+#     return JsonResponse({'status': 'ok'})
+
+#Product
+
+
+
+
+
+
+
+
+
+
+#Category
+
+# @api_view(['PUT'])
+# def updateCategory(request):
+#     data = json.loads(request.body)
+#     categoryId = data['id']
+#     category_name= data['category_name']
+#     category_description = data['category_description']
+#     price = data['price']
+
+#     Categories = Categorys.objects.get(id=categoryId)
+#     Categories.category_name = category_name
+#     Categories.category_description = category_description
+#     Categories.price = price
+#     Categories.save()
 
 #     return JsonResponse({'status': 'ok'})

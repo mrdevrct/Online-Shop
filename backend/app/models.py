@@ -20,7 +20,7 @@ class Users(models.Model):
 
 
 
-# class Categorys(models.Model):
+# class Category(models.Model):
 #     category_name = models.CharField(max_length=255)
 #     category_description = models.CharField(max_length=255)
 #     category_image = models.CharField(max_length=255)

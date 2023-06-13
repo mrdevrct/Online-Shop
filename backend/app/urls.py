@@ -19,4 +19,7 @@ urlpatterns = [
     # path('data/category', views.dataCategory , name='categories'),
     # path('delete/category', views.deleteCategory , name='delete_categories'),
     # path('update/category', views.updateCategory , name='update_categories')
+
+
+
 ]

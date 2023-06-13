@@ -19,6 +19,8 @@ class Products(models.Model):
     price = models.CharField(max_length=255)
     image = models.CharField(max_length=255)
     category = models.ForeignKey('Categorys',on_delete=models.CASCADE)
+    def __str__(self):
+        return f'Carts #{Products.id}'
 
 
 

@@ -73,7 +73,7 @@ def addUser(request):
 #     user.save()
 
 #     return JsonResponse({'status': 'ok'})
-<<<<<<< HEAD
+
 
 #Cart
 
@@ -219,5 +219,4 @@ def addUser(request):
 #     category.save()
 
 #     return JsonResponse({'status': 'ok'})
-=======
->>>>>>> 3e295e3aef0f97bc3b01371123acc1065702bbed
+

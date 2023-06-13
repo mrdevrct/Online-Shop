@@ -24,3 +24,7 @@ class Users(models.Model):
 #     category_name = models.CharField(max_length=255)
 #     category_description = models.CharField(max_length=255)
 #     category_image = models.CharField(max_length=255)
+
+
+# class order(models.Model):
+    

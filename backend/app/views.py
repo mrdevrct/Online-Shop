@@ -24,31 +24,31 @@ def dataUsers(request):
     return JsonResponse({'data': data})
 
 
-@api_view(['POST'])
-def addUser(request):
-    data = json.loads(request.body)
-    nameLastname = data['nameLastname']
-    username = data['username']
-    password = data['password']
-    email = data['email']
-    phoneNumber = data['phoneNumber']
-    city = data['city']
-    address = data['address']
-    nationalCode = data['nationalCode']
+# @api_view(['POST'])
+# def addUser(request):
+#     data = json.loads(request.body)
+#     nameLastname = data['nameLastname']
+#     username = data['username']
+#     password = data['password']
+#     email = data['email']
+#     phoneNumber = data['phoneNumber']
+#     city = data['city']
+#     address = data['address']
+#     nationalCode = data['nationalCode']
 
-    user = Users(
-    username = nameLastname,
-    name_lastname = username,
-    password = password,
-    email = email,
-    phone_number = phoneNumber,
-    city = city,
-    address = address,
-    national_code = nationalCode,
-    )
-    user.save()
+#     user = Users(
+#     username = nameLastname,
+#     name_lastname = username,
+#     password = password,
+#     email = email,
+#     phone_number = phoneNumber,
+#     city = city,
+#     address = address,
+#     national_code = nationalCode,
+#     )
+#     user.save()
 
-    return Response({'status': 'ok'})
+#     return Response({'status': 'ok'})
 
 # @api_view(['DELETE'])
 # def deleteUser(request):
@@ -77,7 +77,76 @@ def addUser(request):
 
 #Cart
 
+# @api_view(['GET'])
+# def dataProduct(request):
+#     productList = Product.objects.all()
 
+#     data = []
+#     for product in productList:
+#         productData = {
+#             'product_name': product.product_name,
+#             'description': product.description,
+#             'price' :product.price,
+#             'image' : product.image,
+#             'category_id' : product.category_id
+#         }
+#         data.append(productData)
+
+#     return JsonResponse({'data': data})
+
+
+# @api_view(['POST'])
+# def dataProduct(request):
+#     data = json.loads(request.body)
+#     product_name = data['product_name']
+#     description = data['description']
+#     price = data['price']
+#     image = data['image']
+#     category_id = data['category_id']
+
+
+#     product = Product(
+#     product_name = product_name,
+#     description = description,
+#     price = price,
+#     image = image,
+#     category_id = category_id
+#     )
+#     product.save()
+
+#     return Response({'status': 'ok'})
+
+
+# @api_view(['DELETE'])
+# def deleteProduct(request):
+#     data = json.loads(request.body)
+#     productId = data['id']
+
+#     Product.objects.filter(id=productId).delete()
+
+#     return JsonResponse({'status': 'ok'})
+
+
+# @api_view(['PUT'])
+# def updateProduct(request):
+#     data = json.loads(request.body)
+#     productId = data['id']
+#     product_name = data['product_name']
+#     description = data['description']
+#     price = data['price']
+#     image = data['image']
+#     category_id = data['category_id']
+
+#     product = Products.objects.get(id=productId)
+#     product.product_name = product_name
+#     product.description = description
+#     product.price = price
+#     product.image = image
+#     product.category_id = category_id
+
+#     product.save()
+
+#     return JsonResponse({'status': 'ok'})
 
 #Product
 
@@ -100,7 +169,7 @@ def addUser(request):
 
 
 # @api_view(['POST'])
-# def dataProduct(request):
+# def addProduct(request):
 #     data = json.loads(request.body)
 #     product_name = data['product_name']
 #     description = data['description']

@@ -19,9 +19,6 @@ class Products(models.Model):
     price = models.CharField(max_length=255)
     image = models.CharField(max_length=255)
     category = models.ForeignKey('Categorys',on_delete=models.CASCADE)
-    def __str__(self):
-        return f'Carts #{Products.id}'
-
 
 
 # category
@@ -38,8 +35,7 @@ class Orders (models.Model):
     total_amount = models.CharField(max_length=255)
     payment_type = models.CharField(max_length=255)
     status = models.CharField(max_length=255)
-    def __str__(self):
-        return f'Orders #{self.id}'
+
 
 #order_details
 class orderDetails (models.Model):
@@ -51,14 +47,10 @@ class orderDetails (models.Model):
     item_discount =models.CharField(max_length=255)
     item_total = models.CharField(max_length=255)
     item_status = models.CharField(max_length=255)
-    def __str__(self):
-        return f'orderDetails #{self.id}'
+
 
 class Carts (models.Model) :
     user = models.ForeignKey('Users',on_delete=models.CASCADE)
     product = models.ForeignKey('Products', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     status = models.CharField(max_length=255)
-
-    def __str__(self):
-        return f'Carts #{self.id}'

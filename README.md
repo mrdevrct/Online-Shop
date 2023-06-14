@@ -39,6 +39,6 @@ git clone url
 
 3- برای استفاده از دستورات جنگو روی لینک زیر کلیک کنید.
 <pre>
-<a href="https://github.com/MohammadAbdollahzade/Syntax-Django">https://github.com/MohammadAbdollahzade/Syntax-Django</a>
+<a target="_blank" href="https://github.com/MohammadAbdollahzade/Syntax-Django" >https://github.com/MohammadAbdollahzade/Syntax-Django</a>
 </pre>
 <hr>

@@ -12,7 +12,7 @@ from .models import Categorys
 from .models import Orders
 from .models import orderDetails
 from .models import Carts
-
+from .models import Maneger
 
 # User
 @api_view(['GET'])
@@ -97,6 +97,39 @@ def updateUser(request):
     user.save()
 
     return JsonResponse({'status': 'ok'})
+
+
+#Manager
+@api_view(['GET'])
+def dataManeger(request):
+    manegerList = Maneger.objects.all()
+
+    data = []
+    for maneger in manegerList:
+        manegerData = {
+            'name': maneger.name,
+            'username': maneger.username,
+            'password' :maneger.password
+        }
+        data.append(manegerData)
+
+    return JsonResponse({'data': data})
+
+
+@api_view(['PUT'])
+def updateManeger(request):
+    data = json.loads(request.body)
+    manegerId = data['id']
+    name = data['name']
+    username = data['username']
+    password = data['password']
+
+    maneger = Maneger.objects.get(id=manegerId)
+    maneger.name = name
+    maneger.username = username
+    maneger.password = password
+
+    maneger.save()
 
 
 

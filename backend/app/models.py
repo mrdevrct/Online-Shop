@@ -2,17 +2,23 @@ from django.db import models
 
 #user
 class Users(models.Model):
-    username = models.CharField(max_length=255, default='N/A')
-    name_lastname = models.CharField(max_length=255, default='N/A')
-    password = models.CharField(max_length=255, default='N/A')
-    email = models.EmailField(max_length=255, default='N/A')
-    phone_number = models.CharField(max_length=255, default='N/A')
-    city = models.CharField(max_length=255, default='N/A')
-    address = models.CharField(max_length=255, default='N/A')
-    national_code = models.CharField(max_length=255, default='N/A')
+    username = models.CharField(max_length=255)
+    name_lastname = models.CharField(max_length=255)
+    password = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    phone_number = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    national_code = models.CharField(max_length=255)
 
 
-#product
+# maneger
+class Maneger(models.Model):
+    name = models.CharField(max_length=255)
+    username = models.CharField(max_length=255)
+    password = models.CharField(max_length=255)
+
+# product
 class Products(models.Model):
     product_name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)

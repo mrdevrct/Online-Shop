@@ -10,5 +10,35 @@
 
   <br>
 
-  <h2>تکنولوژی ها</h2>
+<h2>تکنولوژی ها</h2>
+<p align="right">
+<img src="https://www.svgrepo.com/show/353657/django-icon.svg" width="46" height="46" alt="Django" 
+title="Django"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Sqlite-square-icon.svg" width="46" height="46" alt="Sqlite" 
+title="Sqlite"/>
+<img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" width="46" height="46" alt="Git" 
+title="Git"/>
+</p>
   
+  <br>
+
+<h2>دستورات</h2>
+1- برای استفاده از گیت بش ، گیت را نصب کنید .
+
+<br><pre>
+<a href="https://git-scm.com">https://git-scm.com</a>
+</pre>
+<hr>
+
+2- گیت بش را باز کنید و برای گرفتن پروژه دستور زیر را وارد کنید .
+
+<pre>
+git clone url
+</pre>
+<hr>
+
+3- برای استفاده از دستورات جنگو روی لینک زیر کلیک کنید.
+<pre>
+<a href="https://github.com/MohammadAbdollahzade/Syntax-Django">https://github.com/MohammadAbdollahzade/Syntax-Django</a>
+</pre>
+<hr>

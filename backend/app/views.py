@@ -6,6 +6,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 import json
 
+
+# Tables
 from .models import Users
 from .models import Products
 from .models import Categorys

@@ -40,9 +40,16 @@ urlpatterns = [
     path('delete/order', views.deleteOrder , name='delete_order'),
     path('update/order', views.updateOrder , name='update_order'),
 
-    # orderDetails
+    # OrderDetails
     path('add/orderDetails', views.addOrderDetails , name='add_orderDetails'),
     path('data/orderDetails', views.dataOrderDetails , name='data_orderDetails'),
     path('delete/orderDetails', views.deleteOrderDetails , name='delete_orderDetails'),
-    path('update/orderDetails', views.updateOrderDetails , name='update_orderDetails')
+    path('update/orderDetails', views.updateOrderDetails , name='update_orderDetails'),
+
+
+    # Admin
+    path('add/admin', views.addAdmin , name='add_admin'),
+    path('data/admins', views.dataAdmin , name='data_admin'),
+    path('delete/admin', views.deleteAdmin , name='delete_admin'),
+    path('update/admin', views.updateAdmin , name='update_admin')
 ]

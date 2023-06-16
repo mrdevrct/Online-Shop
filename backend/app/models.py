@@ -1,6 +1,6 @@
 from django.db import models
 
-#user
+# user
 class Users(models.Model):
     username = models.CharField(max_length=255)
     name_lastname = models.CharField(max_length=255)
@@ -22,7 +22,7 @@ class Maneger(models.Model):
 class Products(models.Model):
     product_name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
-    price = models.IntegerField(max_length=255)
+    price = models.CharField(max_length=255)
     image = models.CharField(max_length=255)
     category_id = models.ForeignKey('Categorys',on_delete=models.CASCADE)
 
@@ -54,11 +54,11 @@ class Orders (models.Model):
     payment_type = models.CharField(max_length=255)
     status = models.CharField(max_length=255)
 
-    
+
 # order_details
-class orderDetails (models.Model):
-    oredr = models.ForeignKey('Orders',on_delete=models.CASCADE)
-    product = models.ForeignKey('Products', on_delete=models.CASCADE)
+class OrderDetails (models.Model):
+    oredr_id = models.ForeignKey('Orders',on_delete=models.CASCADE)
+    product_id = models.ForeignKey('Products', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     item_notes = models.CharField(max_length=255)
     item_price = models.CharField(max_length=255)
@@ -67,3 +67,8 @@ class orderDetails (models.Model):
     item_status = models.CharField(max_length=255)
 
 
+# admin
+class Admin(models.Model):
+    name = models.CharField(max_length=255)
+    username = models.CharField(max_length=255)
+    password = models.CharField(max_length=255)

@@ -10,9 +10,11 @@ from .models import Users
 from .models import Products
 from .models import Categorys
 from .models import Orders
-from .models import orderDetails
+from .models import OrderDetails
 from .models import Carts
 from .models import Maneger
+from .models import Admin
+
 
 # User
 @api_view(['GET'])
@@ -417,19 +419,19 @@ def updateOrder(request):
 # orderDetails
 @api_view(['GET'])
 def dataOrderDetails(request):
-    OrderDetailsList = orderDetails.objects.all()
+    OrderDetailsList = OrderDetails.objects.all()
 
     data = []
     for orderDetail in OrderDetailsList:
         orderDetailsData = {
-            'oredr': orderDetail.oredr,
-            'product': orderDetail.product,
+            'oredrId': orderDetail.oredr_id_id,
+            'productId': orderDetail.product_id_id,
             'quantity': orderDetail.quantity,
-            'item_notes': orderDetail.item_notes,
-            'item_price': orderDetail.item_price,
-            'item_discount': orderDetail.item_discount,
-            'item_total': orderDetail.item_total,
-            'item_status': orderDetail.item_status
+            'itemNotes': orderDetail.item_notes,
+            'itemPrice': orderDetail.item_price,
+            'itemDiscount': orderDetail.item_discount,
+            'itemTotal': orderDetail.item_total,
+            'itemStatus': orderDetail.item_status
         }
         data.append(orderDetailsData)
 
@@ -439,24 +441,24 @@ def dataOrderDetails(request):
 @api_view(['POST'])
 def addOrderDetails(request):
     data = json.loads(request.body)
-    oredr = data['oredr']
-    product = data['product']
+    oredrId = data['oredrId']
+    productId = data['productId']
     quantity = data['quantity']
-    item_notes = data['item_notes']
-    item_price = data['item_price']
-    item_discount = data['item_discount']
-    item_total = data['item_total']
-    item_status = data['item_status']
+    itemNotes = data['itemNotes']
+    itemPrice = data['itemPrice']
+    itemDiscount = data['itemDiscount']
+    itemTotal = data['itemTotal']
+    itemStatus = data['itemStatus']
 
-    orderdetail = orderDetails(
-    oredr = oredr,
-    product = product,
+    orderdetail = OrderDetails(
+    oredr_id = Orders.objects.get(id=oredrId),
+    product_id = Products.objects.get(id=oredrId),
     quantity = quantity,
-    item_notes = item_notes,
-    item_price = item_price,
-    item_discount = item_discount,
-    item_total = item_total,
-    item_status = item_status
+    item_notes = itemNotes,
+    item_price = itemPrice,
+    item_discount = itemDiscount,
+    item_total = itemTotal,
+    item_status = itemStatus
     )
     orderdetail.save()
 
@@ -465,9 +467,9 @@ def addOrderDetails(request):
 @api_view(['DELETE'])
 def deleteOrderDetails(request):
     data = json.loads(request.body)
-    orderdetailId = data['id']
+    orderDetailId = data['id']
 
-    orderDetails.objects.filter(id=orderdetailId).delete()
+    OrderDetails.objects.filter(id=orderDetailId).delete()
 
     return JsonResponse({'status': 'ok'})
 
@@ -476,25 +478,86 @@ def deleteOrderDetails(request):
 def updateOrderDetails(request):
     data = json.loads(request.body)
     orderdetailId = data['id']
-    oredr = data['oredr']
-    product = data['product']
+    oredrId = data['oredrId']
+    productId = data['productId']
     quantity = data['quantity']
-    item_notes = data['item_notes']
-    item_price = data['item_price']
-    item_discount = data['item_discount']
-    item_total = data['item_total']
-    item_status = data['item_status']
+    itemNotes = data['itemNotes']
+    itemPrice = data['itemPrice']
+    itemDiscount = data['itemDiscount']
+    itemTotal = data['itemTotal']
+    itemStatus = data['itemStatus']
 
-    orderdetail = orderDetails.objects.get(id=orderdetailId)
-    orderdetail.user = oredr
-    orderdetail.product = product
+    orderdetail = OrderDetails.objects.get(id=orderdetailId)
+    orderdetail.oredr_id = Orders.objects.get(id=oredrId) 
+    orderdetail.product_id = Products.objects.get(id=productId)  
     orderdetail.quantity = quantity
-    orderdetail.item_notes = item_notes
-    orderdetail.item_price = item_price
-    orderdetail.item_discount = item_discount
-    orderdetail.item_total = item_total
-    orderdetail.item_status = item_status
+    orderdetail.item_notes = itemNotes
+    orderdetail.item_price = itemPrice
+    orderdetail.item_discount = itemDiscount
+    orderdetail.item_total = itemTotal
+    orderdetail.item_status = itemStatus
 
     orderdetail.save()
+
+    return JsonResponse({'status': 'ok'})
+
+
+# Admin
+@api_view(['GET'])
+def dataAdmin(request):
+    adminsList = Admin.objects.all()
+
+    data = []
+    for admin in adminsList:
+        adminData = {
+            'name': admin.name,
+            'username': admin.username,
+            'password': admin.password
+        }
+        data.append(adminData)
+
+    return JsonResponse({'data': data})
+
+
+@api_view(['POST'])
+def addAdmin(request):
+    data = json.loads(request.body)
+    name = data['name']
+    username = data['username']
+    password = data['password']
+
+    admin = Admin(
+    name = name,
+    username = username,
+    password = password
+    )
+    admin.save()
+
+    return Response({'status': 'ok'})
+
+@api_view(['DELETE'])
+def deleteAdmin(request):
+    data = json.loads(request.body)
+    adminId = data['id']
+
+    Admin.objects.filter(id=adminId).delete()
+
+    return JsonResponse({'status': 'ok'})
+
+
+@api_view(['PUT'])
+def updateAdmin(request):
+    data = json.loads(request.body)
+    adminId = data['id']
+    name = data['name']
+    username = data['username']
+    password = data['password']
+
+    admin = Admin.objects.get(id=adminId)
+    name = name,
+    username = username,
+    password = password
+
+    admin.save()
 
     return JsonResponse({'status': 'ok'})

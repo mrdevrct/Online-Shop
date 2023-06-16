@@ -38,7 +38,15 @@ class Categorys(models.Model):
             'category_name': self.category_name,
         }
 
-#order
+# cart
+class Carts (models.Model) :
+    user_id = models.ForeignKey('Users',on_delete=models.CASCADE)
+    product_id = models.ForeignKey('Products', on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    status = models.CharField(max_length=255)
+
+
+# order
 class Orders (models.Model):
     user= models.ForeignKey('Users',on_delete=models.CASCADE)
     order_data = models.CharField(max_length=255)
@@ -47,7 +55,7 @@ class Orders (models.Model):
     status = models.CharField(max_length=255)
 
 
-#order_details
+# order_details
 class orderDetails (models.Model):
     oredr = models.ForeignKey('Orders',on_delete=models.CASCADE)
     product = models.ForeignKey('Products', on_delete=models.CASCADE)
@@ -59,8 +67,3 @@ class orderDetails (models.Model):
     item_status = models.CharField(max_length=255)
 
 
-class Carts (models.Model) :
-    user = models.ForeignKey('Users',on_delete=models.CASCADE)
-    product = models.ForeignKey('Products', on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField()
-    status = models.CharField(max_length=255)

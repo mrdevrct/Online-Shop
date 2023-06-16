@@ -256,18 +256,88 @@ def deleteCategory(request):
 def updateCategory(request):
     data = json.loads(request.body)
     categoryId = data['id']
-    category_name = data['category_name']
-    category_description = data['category_description']
-    category_image = data['category_image']
+    categoryName = data['categoryName']
+    categoryDescription = data['categoryDescription']
+    categoryImage = data['categoryImage']
 
     category = Categorys.objects.get(id=categoryId)
-    category.category_name = category_name
-    category.category_description = category_description
-    category.category_image = category_image
+    category.category_name = categoryName
+    category.category_description = categoryDescription
+    category.category_image = categoryImage
 
     category.save()
 
     return JsonResponse({'status': 'ok'})
+
+
+
+# Cart
+@api_view(['GET'])
+def dataCart(request):
+    cartList = Carts.objects.all()
+
+    data = []
+    for cart in cartList:
+        cartData = {
+            'userId': cart.user_id_id,
+            'productId': cart.product_id_id,
+            'quantity': cart.quantity,
+            'status': cart.status
+        }
+        data.append(cartData)
+
+    return JsonResponse({'data': data})
+
+
+@api_view(['POST'])
+def addCart(request):
+    data = json.loads(request.body)
+    userId = data['userId']
+    productId = data['productId']
+    quantity = data['quantity']
+    status = data['status']
+
+    user = Users.objects.get(id=userId)
+    product = Products.objects.get(id=productId)
+
+    cart = Carts(
+    user_id = user,
+    product_id = product,
+    quantity = quantity,
+    status = status
+    )
+    cart.save()
+    return Response({'status': 'ok'})
+
+@api_view(['DELETE'])
+def deleteCart(request):
+    data = json.loads(request.body)
+    cartId = data['id']
+
+    Carts.objects.filter(id=cartId).delete()
+
+    return JsonResponse({'status': 'ok'})
+
+
+@api_view(['PUT'])
+def updateCart(request):
+    data = json.loads(request.body)
+    cartId = data['id']
+    userId = data['userId']
+    productId = data['productId']
+    quantity = data['quantity']
+    status = data['status']
+
+    cart = Carts.objects.get(id=cartId)
+    cart.user_id = Users.objects.get(id=userId)
+    cart.product_id = Products.objects.get(id=productId)
+    cart.quantity = quantity
+    cart.status = status
+
+    cart.save()
+
+    return JsonResponse({'status': 'ok'})
+
 
 
 # Order
@@ -339,72 +409,6 @@ def updateOrder(request):
     order.status = status
 
     order.save()
-
-    return JsonResponse({'status': 'ok'})
-
-
-
-# Cart
-@api_view(['GET'])
-def dataCart(request):
-    cartList = Carts.objects.all()
-
-    data = []
-    for cart in cartList:
-        cartData = {
-            'user': cart.user,
-            'product': cart.product,
-            'quantity': cart.quantity,
-            'status': cart.status
-        }
-        data.append(cartData)
-
-    return JsonResponse({'data': data})
-
-
-@api_view(['POST'])
-def addCart(request):
-    data = json.loads(request.body)
-    user = data['user']
-    product = data['product']
-    quantity = data['quantity']
-    status = data['status']
-
-    cart = Carts(
-    user = user,
-    product = product,
-    quantity = quantity,
-    status = status
-    )
-    cart.save()
-    return Response({'status': 'ok'})
-
-@api_view(['DELETE'])
-def deleteCart(request):
-    data = json.loads(request.body)
-    cartId = data['id']
-
-    Carts.objects.filter(id=cartId).delete()
-
-    return JsonResponse({'status': 'ok'})
-
-
-@api_view(['PUT'])
-def updateCart(request):
-    data = json.loads(request.body)
-    cartId = data['id']
-    user = data['user']
-    product = data['product']
-    quantity = data['quantity']
-    status = data['status']
-
-    cart = Carts.objects.get(id=cartId)
-    cart.user = user
-    cart.product = product
-    cart.quantity = quantity
-    cart.status = status
-
-    cart.save()
 
     return JsonResponse({'status': 'ok'})
 

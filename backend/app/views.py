@@ -348,10 +348,10 @@ def dataOrder(request):
     data = []
     for order in orderList:
         orderData = {
-            'user': order.user,
-            'order_data': order.order_data,
-            'total_amount': order.total_amount,
-            'payment_type': order.payment_type,
+            'userId': order.user_id_id,
+            'orderData': order.order_data,
+            'totalAmount': order.total_amount,
+            'paymentType': order.payment_type,
             'status': order.status
 
         }
@@ -364,17 +364,17 @@ def dataOrder(request):
 @api_view(['POST'])
 def addOrder(request):
     data = json.loads(request.body)
-    user = data['user']
-    order_data = data['order_data']
-    total_amount = data['total_amount']
-    payment_type = data['payment_type']
+    userId = data['userId']
+    orderData = data['orderData']
+    totalAmount = data['totalAmount']
+    paymentType = data['paymentType']
     status = data['status']
 
     order = Orders(
-    user = user,
-    order_data = order_data,
-    total_amount = total_amount,
-    payment_type = payment_type,
+    user_id = Users.objects.get(id=userId),
+    order_data = orderData,
+    total_amount = totalAmount,
+    payment_type = paymentType,
     status = status,
     )
     order.save()
@@ -395,17 +395,17 @@ def deleteOrder(request):
 def updateOrder(request):
     data = json.loads(request.body)
     orderId = data['id']
-    user = data['user']
-    order_data = data['order_data']
-    total_amount = data['total_amount']
-    payment_type = data['payment_type']
+    userId = data['userId']
+    orderData = data['orderData']
+    totalAmount = data['totalAmount']
+    paymentType = data['paymentType']
     status = data['status']
 
     order = Orders.objects.get(id=orderId)
-    order.user = user
-    order.order_data = order_data
-    order.total_amount = total_amount
-    order.payment_type = payment_type
+    order.user_id = Users.objects.get(id=userId)
+    order.order_data = orderData
+    order.total_amount = totalAmount
+    order.payment_type = paymentType
     order.status = status
 
     order.save()

@@ -48,13 +48,13 @@ class Carts (models.Model) :
 
 # order
 class Orders (models.Model):
-    user= models.ForeignKey('Users',on_delete=models.CASCADE)
+    user_id = models.ForeignKey('Users',on_delete=models.CASCADE)
     order_data = models.CharField(max_length=255)
     total_amount = models.CharField(max_length=255)
     payment_type = models.CharField(max_length=255)
     status = models.CharField(max_length=255)
 
-
+    
 # order_details
 class orderDetails (models.Model):
     oredr = models.ForeignKey('Orders',on_delete=models.CASCADE)

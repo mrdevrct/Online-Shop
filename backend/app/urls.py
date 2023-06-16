@@ -16,27 +16,27 @@ urlpatterns = [
 
     # Product
     path('add/product', views.addProduct , name='add_product'),
-    path('data/product', views.dataProduct , name='data_products'),
+    path('data/products', views.dataProduct , name='data_products'),
     path('delete/product', views.deleteProduct , name='delete_products'),
     path('update/product', views.updateProduct , name='update_products'),
 
     # Category
     path('add/category', views.addCategory , name='add_category'),
-    path('data/category', views.dataCategory , name='data_categories'),
+    path('data/categorys', views.dataCategory , name='data_categories'),
     path('delete/category', views.deleteCategory , name='delete_categories'),
     path('update/category', views.updateCategory , name='update_categories'),
 
 
     # Cart
     path('add/cart', views.addCart , name='add_cart'),
-    path('data/cart', views.dataCart , name='data_carts'),
+    path('data/carts', views.dataCart , name='data_carts'),
     path('delete/cart', views.deleteCart , name='delete_cart'),
     path('update/cart', views.updateCart , name='update_cart'),
 
 
     # Order
     path('add/order', views.addOrder , name='add_order'),
-    path('data/order', views.dataOrder , name='data_orders'),
+    path('data/orders', views.dataOrder , name='data_orders'),
     path('delete/order', views.deleteOrder , name='delete_order'),
     path('update/order', views.updateOrder , name='update_order'),
 

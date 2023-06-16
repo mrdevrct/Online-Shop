@@ -6,10 +6,10 @@ class Users(models.Model):
     name_lastname = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
-    phone_number = models.CharField(max_length=255)
+    phone_number = models.IntegerField(max_length=255)
     city = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
-    national_code = models.CharField(max_length=255)
+    national_code = models.IntegerField(max_length=255)
 
 
 # maneger
@@ -22,9 +22,9 @@ class Maneger(models.Model):
 class Products(models.Model):
     product_name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
-    price = models.CharField(max_length=255)
+    price = models.IntegerField(max_length=255)
     image = models.CharField(max_length=255)
-    category = models.ForeignKey('Categorys',on_delete=models.CASCADE)
+    category_id = models.ForeignKey('Categorys',on_delete=models.CASCADE)
 
 
 # category
@@ -32,7 +32,11 @@ class Categorys(models.Model):
     category_name = models.CharField(max_length=255)
     category_description = models.CharField(max_length=255)
     category_image = models.CharField(max_length=255)
-
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'category_name': self.category_name,
+        }
 
 #order
 class Orders (models.Model):

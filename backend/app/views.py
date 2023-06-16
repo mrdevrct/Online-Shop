@@ -131,7 +131,7 @@ def updateManeger(request):
 
     maneger.save()
 
-
+    return JsonResponse({'status': 'ok'})
 
 # Product
 @api_view(['GET'])
@@ -141,11 +141,11 @@ def dataProduct(request):
     data = []
     for product in productList:
         productData = {
-            'product_name': product.product_name,
+            'productName': product.product_name,
             'description': product.description,
             'price' :product.price,
             'image' : product.image,
-            'category_id' : product.category_id
+            'categoryId' : product.category_id.to_dict()
         }
         data.append(productData)
 
@@ -155,18 +155,20 @@ def dataProduct(request):
 @api_view(['POST'])
 def addProduct(request):
     data = json.loads(request.body)
-    product_name = data['product_name']
+    productName = data['productName']
     description = data['description']
     price = data['price']
     image = data['image']
-    category_id = data['category_id']
+    categoryId = data['categoryId']
+
+    category = Categorys.objects.get(id=categoryId)
 
     product = Products(
-    product_name = product_name,
+    product_name = productName,
     description = description,
     price = price,
     image = image,
-    category_id = category_id
+    category_id = category
     )
     product.save()
 
@@ -187,18 +189,18 @@ def deleteProduct(request):
 def updateProduct(request):
     data = json.loads(request.body)
     productId = data['id']
-    product_name = data['product_name']
+    productName = data['productName']
     description = data['description']
     price = data['price']
     image = data['image']
-    category_id = data['category_id']
+    categoryId = data['categoryId']
 
     product = Products.objects.get(id=productId)
-    product.product_name = product_name
+    product.product_name = productName
     product.description = description
     product.price = price
     product.image = image
-    product.category_id = category_id
+    product.category_id = Categorys.objects.get(id=categoryId)
 
     product.save()
 
@@ -225,15 +227,15 @@ def dataCategory(request):
 @api_view(['POST'])
 def addCategory(request):
     data = json.loads(request.body)
-    category_name = data['category_name']
-    category_description = data['category_description']
-    category_image = data['category_image']
+    categoryName = data['categoryName']
+    categoryDescription = data['categoryDescription']
+    categoryImage = data['categoryImage']
 
 
     category = Categorys(
-    category_name = category_name,
-    category_description = category_description,
-    category_image = category_image,
+    category_name = categoryName,
+    category_description = categoryDescription,
+    category_image = categoryImage
     )
     category.save()
 

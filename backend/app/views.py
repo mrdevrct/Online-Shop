@@ -22,14 +22,14 @@ def dataUsers(request):
     data = []
     for user in usersList:
         userData = {
-            'nameLastname': user.nameLastname,
+            'nameLastname': user.name_lastname,
             'username': user.username,
             'password': user.password,
             'email': user.email,
-            'phoneNumber': user.phoneNumber,
+            'phoneNumber': user.phone_number,
             'city': user.city,
             'address': user.address,
-            'nationalCode': user.nationalCode
+            'nationalCode': user.national_code
         }
         data.append(userData)
 

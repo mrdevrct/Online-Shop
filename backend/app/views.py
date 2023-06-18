@@ -90,14 +90,14 @@ def updateUser(request):
     nationalCode = data['nationalCode']
 
     user = Users.objects.get(id=userId)
-    username = username,
-    nameLastname = nameLastname,
-    password = password,
-    email = email,
-    phoneNumber = phoneNumber,
-    city = city,
-    address = address,
-    nationalCode = nationalCode,
+    user.username = username
+    user.nameLastname = nameLastname
+    user.password = password
+    user.email = email
+    user.phoneNumber = phoneNumber
+    user.city = city
+    user.address = address
+    user.nationalCode = nationalCode
     user.save()
 
     return JsonResponse({'status': 'ok'})
@@ -556,9 +556,9 @@ def updateAdmin(request):
     password = data['password']
 
     admin = Admin.objects.get(id=adminId)
-    name = name,
-    username = username,
-    password = password
+    admin.name = name
+    admin.username = username
+    admin.password = password
 
     admin.save()
 

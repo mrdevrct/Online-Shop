@@ -41,10 +41,10 @@ urlpatterns = [
     path('update/order', views.updateOrder , name='update_order'),
 
     # OrderDetails
-    path('add/orderDetails', views.addOrderDetails , name='add_orderDetails'),
-    path('data/orderDetails', views.dataOrderDetails , name='data_orderDetails'),
-    path('delete/orderDetails', views.deleteOrderDetails , name='delete_orderDetails'),
-    path('update/orderDetails', views.updateOrderDetails , name='update_orderDetails'),
+    path('add/order_details', views.addOrderDetails , name='add_orderDetails'),
+    path('data/order_details', views.dataOrderDetails , name='data_orderDetails'),
+    path('delete/order_details', views.deleteOrderDetails , name='delete_orderDetails'),
+    path('update/order_details', views.updateOrderDetails , name='update_orderDetails'),
 
 
     # Admin
